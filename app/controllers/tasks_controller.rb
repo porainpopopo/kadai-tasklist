@@ -2,7 +2,7 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:show, :edit, :update, :destroy]
     #タスクの一覧ページ
     def index
-        @tasks = Task.all
+        @tasks = Task.order(id: :desc).page(params[:page]).per(20)
     end
     
     #タスクの詳細ページ
